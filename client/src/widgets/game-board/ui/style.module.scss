@@ -1,0 +1,294 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #e0e0ff;
+  padding: 20px;
+  gap: 32px;
+  margin: 0 auto;
+}
+
+.status {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #a78bfa, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  min-height: 3.2rem;
+  line-height: 1.3;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: clamp(8px, 2.5vw, 16px);
+  width: min(90vw, 360px);
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: clamp(12px, 4vw, 24px);
+  background: rgba(30, 30, 50, 0.6);
+  border-radius: clamp(16px, 5vw, 28px);
+  border: 1px solid rgba(120, 100, 220, 0.18);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 10px rgba(100, 100, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.players {
+  display: flex;
+  gap: 2.5rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.spinnerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 2.5rem 1rem 3rem;
+  min-height: auto;
+  flex: none;
+  text-align: center;
+}
+
+.waitingText {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #e0e0ff;
+  margin: 0;
+}
+
+.gameInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  font-size: 1.05rem;
+
+  span {
+    font-weight: 500;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 500px) {
+  .board {
+    width: 96vw;
+    padding: 10px;
+    gap: clamp(6px, 2.8vw, 12px);
+    border-radius: clamp(14px, 6vw, 22px);
+  }
+
+  .status {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .waitingText {
+    font-size: 1.3rem;
+  }
+
+  .gameInfo {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .players {
+    gap: 2rem;
+    font-size: 1.2rem;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #1f1f2e;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #4c3f7a;
+}
+
+.modalHeader {
+  padding: 20px 24px;
+  border-bottom: 1px solid #333;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    color: #e0e0ff;
+    font-size: 1.4rem;
+  }
+}
+
+.modalBody {
+  padding: 24px;
+  text-align: center;
+  color: #ccc;
+
+  p {
+    margin: 8px 0;
+  }
+
+  .modalWarning {
+    color: #ff6b6b;
+    font-size: 0.95rem;
+  }
+}
+
+.modalFooter {
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  border-top: 1px solid #333;
+}
+
+.firstMoveOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 30, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  padding: 0 20px;
+}
+
+.firstMoveMessage {
+  background: linear-gradient(145deg, #2a1b4a, #1f1438);
+  border: 2px solid #a78bfa;
+  border-radius: 24px;
+  padding: 2.8rem 3.2rem;
+  text-align: center;
+  box-shadow: 
+    0 25px 70px rgba(167, 139, 250, 0.3),
+    inset 0 0 50px rgba(167, 139, 250, 0.12);
+  animation: firstMovePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.firstMoveMessage::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 65%);
+  animation: firstMoveShine 5s infinite linear;
+  pointer-events: none;
+}
+
+.firstMoveIcon {
+  font-size: 5rem;
+  margin-bottom: 1.2rem;
+  animation: firstMoveIconBounce 1.4s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.firstMoveText {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #e0e0ff;
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+
+.you {
+  color: #a78bfa;
+  text-shadow: 0 0 25px #a78bfa;
+  animation: glow 1.6s ease-in-out infinite alternate;
+}
+
+.opponent {
+  color: #c4b5fd;
+}
+
+.firstMoveSubtext {
+  font-size: 1.1rem;
+  color: #b8b0e0;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+@keyframes firstMovePop {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes firstMoveIconBounce {
+  from { transform: scale(0.9) rotate(-8deg); }
+  to   { transform: scale(1.08) rotate(8deg); }
+}
+
+@keyframes firstMoveShine {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 15px #a78bfa; }
+  to   { text-shadow: 0 0 35px #a78bfa, 0 0 50px #7c3aed; }
+}
