@@ -3,7 +3,9 @@
 A modern real-time implementation of the classic Tic-Tac-Toe game.
 <img src="https://i.ibb.co/MW4kdqz/main.png" width="500" />
 ---
+### 🎥 Demo
 
+<video src="https://github.com/user-attachments/assets/006ddd8a-b719-47cd-8139-eca4351863e6" width="100%" controls autoplay loop muted></video>
 ## 🚀 Features
 
 * ⚡ Real-time gameplay via WebSocket
